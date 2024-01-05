@@ -7,13 +7,13 @@ After=docker.service
 Restart=always
 User=root
 Group=docker
-WorkingDirectory=$(pwd)
+WorkingDirectory=/usr/local/include/homeassistant
 # Shutdown container (if running) when unit is started
-ExecStartPre=$(which docker-compose) -f docker-compose.yml down
+ExecStartPre=docker-compose -f docker-compose.yml down
 # Start container when unit is started
-ExecStart=$(which docker-compose) -f docker-compose.yml up
+ExecStart=docker-compose -f docker-compose.yml up
 # Stop container when unit is stopped
-ExecStop=$(which docker-compose) -f docker-compose.yml down
+ExecStop=docker-compose -f docker-compose.yml down
 
 [Install]
 WantedBy=multi-user.target
